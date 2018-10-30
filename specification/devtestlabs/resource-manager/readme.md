@@ -29,15 +29,15 @@ openapi-type: arm
 tag: package-2019-07
 ```
 
-
 ### Tag: package-2019-07
 
 These settings apply only when `--tag=package-2019-07` is specified on the command line.
 
-```yaml $(tag) == 'package-2019-07'
+``` yaml $(tag) == 'package-2019-07'
 input-file:
   - Microsoft.DevTestLab/stable/2019-07-14/DTL.json
 ```
+
 ### Tag: package-2016-05
 
 These settings apply only when `--tag=package-2016-05` is specified on the command line.
@@ -170,4 +170,14 @@ java:
   output-folder: $(azure-libraries-for-java-folder)/devtestlab/resource-manager/v2015_05_21_preview
 regenerate-manager: true
 generate-interface: true
+```
+
+## Suppression
+
+``` yaml
+directive:
+  - suppress: ListInOperationName
+    from: DTL.json
+    where: '$.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/policysets/{name}/evaluatePolicies"].post.operationId'
+    reason: frijgirg
 ```
